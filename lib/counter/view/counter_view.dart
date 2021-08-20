@@ -2,7 +2,6 @@ import 'package:counter_bloc/counter/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class ControlButtons extends StatelessWidget {
   const ControlButtons({Key? key}) : super(key: key);
 
@@ -28,11 +27,6 @@ class ControlButtons extends StatelessWidget {
   }
 }
 
-
-/// {@template counter_view}
-/// A [StatelessWidget] which reacts to the provided
-/// [CounterCubit] state and notifies it in response to user input.
-/// {@endtemplate}
 class CounterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -48,12 +42,12 @@ class CounterView extends StatelessWidget {
         child: BlocBuilder<CounterCubit, int>(
           builder: (context, state) {
             return GestureDetector(
-                child: Text(
-                  '$state',
-                  style: textTheme.headline2,
-                  key: const Key('counterView_result'),
-                ),
-                onTap: onCounterNumberTap,
+              child: Text(
+                '$state',
+                style: textTheme.headline2,
+                key: const Key('counterView_result'),
+              ),
+              onTap: onCounterNumberTap,
             );
           },
         ),
