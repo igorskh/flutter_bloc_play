@@ -10,28 +10,22 @@ import 'router.dart';
 
 Page routeToPage(AppRoute route) {
   final Widget child;
-  final ValueKey key;
 
   final String path = route.path;
+  final ValueKey key = ValueKey(route.key);
 
   if (route.isPage(AppPages.main)) {
     child = MainScreen();
-    key = ValueKey('MainScreen');
   } else if (route.isPage(AppPages.home)) {
     child = CounterScreen();
-    key = ValueKey('HomeScreen');
   } else if (route.isPage(AppPages.detail)) {
     child = DetailScreen(index: route.id);
-    key = ValueKey('Detail${route.id}');
   } else if (route.isPage(AppPages.timer)) {
     child = TimerScreen();
-    key = ValueKey('Timer');
   } else if (route.isPage(AppPages.posts)) {
     child = PostsScreen();
-    key = ValueKey('Posts');
   } else {
     child = UnknownScreen();
-    key = ValueKey('UnknownScreen');
   }
   return MaterialPage(
     child: child,

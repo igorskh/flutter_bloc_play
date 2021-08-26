@@ -29,19 +29,25 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Main')),
       body: Center(
-        child: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () => _navigate(AppRoute.home()),
-                child: Text('Counter')),
-            ElevatedButton(
-                onPressed: () => _navigate(AppRoute.timer()),
-                child: Text('Timer')),
-            ElevatedButton(
-                onPressed: () => _navigate(AppRoute.posts()),
-                child: Text('Posts')),
-            ElevatedButton(onPressed: _navigateDetail, child: Text('Detail')),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () => _navigate(AppRoute.home()),
+                  child: Text('Counter')),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () => _navigate(AppRoute.timer()),
+                  child: Text('Timer')),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () => _navigate(AppRoute.posts()),
+                  child: Text('Posts')),
+              SizedBox(height: 10),
+              ElevatedButton(onPressed: _navigateDetail, child: Text('Detail')),
+            ],
+          ),
         ),
       ),
     );

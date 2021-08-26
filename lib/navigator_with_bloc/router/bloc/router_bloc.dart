@@ -31,13 +31,13 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
     RouterEvent event,
   ) async* {
     if (event is RouterPop) {
-      yield await _routerPopToState(event, state);
+      yield await _routerPopToState(event.page, state);
     } else if (event is RouterPush) {
-      yield await _routerPushToState(event, state);
+      yield await _routerPushToState(event.route, state);
     } else if (event is RouterReplace) {
       yield await _routerReplaceToState(event.route, state);
     } else if (event is RouterNewPath) {
-      yield await _routerReplaceToState(event.route, state);
+      yield await _routerPushToState(event.route, state);
     }
     notifyListeners();
   }
@@ -56,18 +56,21 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
     );
   }
 
-  Future<RouterState> _routerPopToState(
-      RouterPop event, RouterState state) async {
-    state.pages.remove(event.page);
+  Future<RouterState> _routerPopToState(Page page, RouterState state) async {
+    state.pages.remove(page);
     return state.copyWith(
       pages: state.pages,
     );
   }
 
   Future<RouterState> _routerPushToState(
-      RouterPush event, RouterState state) async {
+      AppRoute route, RouterState state) async {
+    var newPage = routeToPage(route);
+    if (state.pages.any((element) => element.key == newPage.key)) {
+      return state;
+    }
     state.pages.add(
-      routeToPage(event.route),
+      newPage,
     );
     return state.copyWith(
       pages: state.pages,
