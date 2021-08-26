@@ -1,30 +1,25 @@
 part of 'router.dart';
 
-AppRoute parseRoute(Uri uri) {
-  // Handle '/'
-  if (uri.pathSegments.isEmpty) {
-    return AppRoute.main();
-  }
-
-  if (uri.pathSegments.length == 1) {
-    if (uri.pathSegments[0] == 'home') {
-      return AppRoute.home();
-    }
-  }
-
-  if (uri.pathSegments.length == 2) {
-    if (uri.pathSegments[0] == 'detail') {
-      var detailId = int.tryParse(uri.pathSegments[1]) ?? 0;
-      return AppRoute.detail(id: detailId);
-    }
-  }
-
-  return AppRoute.unknown();
-}
-
 class AppRoute {
   final AppPages page;
   int id = 0;
+
+  String get path {
+    switch (page) {
+      case AppPages.main:
+        return '/';
+      case AppPages.home:
+        return '/home';
+      case AppPages.unknown:
+        return '/404';
+      case AppPages.detail:
+        return '/detail/$id';
+      case AppPages.timer:
+        return '/timer';
+      case AppPages.posts:
+        return '/posts';
+    }
+  }
 
   AppRoute.main() : page = AppPages.main;
 
