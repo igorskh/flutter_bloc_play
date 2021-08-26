@@ -28,6 +28,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return BlocBuilder<RouterBloc, RouterState>(
       builder: (context, state) {
         return Scaffold(
@@ -35,10 +37,18 @@ class _DetailScreenState extends State<DetailScreen> {
           body: Center(
             child: Column(
               children: [
+                SizedBox(height: 10),
                 ElevatedButton(
                     onPressed: () => _navigateDetail(state.pages.length - 1),
                     child: Text('Next Detail')),
+                SizedBox(height: 10),
                 ElevatedButton(onPressed: _resetToHome, child: Text('Main')),
+                SizedBox(height: 10),
+                Text(
+                  '${widget.index}',
+                  style: textTheme.headline2,
+                  key: const Key('detailView_result'),
+                ),
               ],
             ),
           ),
