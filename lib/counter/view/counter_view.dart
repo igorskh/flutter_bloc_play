@@ -13,12 +13,14 @@ class ControlButtons extends StatelessWidget {
       children: <Widget>[
         FloatingActionButton(
           key: const Key('counterView_increment'),
+          heroTag: 'counterView_increment',
           child: const Icon(Icons.add),
           onPressed: () => context.read<CounterCubit>().increment(),
         ),
         const SizedBox(height: 8),
         FloatingActionButton(
           key: const Key('counterView_decrement'),
+          heroTag: 'counterView_decrement',
           child: const Icon(Icons.remove),
           onPressed: () => context.read<CounterCubit>().decrement(),
         ),
