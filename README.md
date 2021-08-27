@@ -6,7 +6,7 @@ Implementation of applications combined into a single application with navigatio
 * [Counter](/counter)
 * [Timer](/timer)
 * [Posts from REST](/posts)
-* [Todos](/todos)
+* [Todos](/todos) app with SQLite
 * [Navigator 2.0](/navigator_no_bloc)
 * [Navigator with Bloc](/navigator_with_bloc)
 
