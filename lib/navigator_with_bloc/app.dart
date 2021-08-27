@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import './router/bloc/router_bloc.dart';
 import './router/router.dart';
 
-class MyApp extends StatelessWidget {
+class BlocNavigationApp extends StatelessWidget {
   final RouterBloc routerBloc = RouterBloc();
 
   @override
