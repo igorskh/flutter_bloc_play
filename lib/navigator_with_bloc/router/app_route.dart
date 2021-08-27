@@ -15,6 +15,8 @@ class AppRoute {
         return 'timer';
       case AppPages.posts:
         return 'posts';
+      case AppPages.todos:
+        return 'todos';
     }
   }
 
@@ -43,6 +45,8 @@ class AppRoute {
         return 'Timer';
       case AppPages.posts:
         return 'Posts';
+      case AppPages.todos:
+        return 'Todos';
     }
   }
 
@@ -53,6 +57,8 @@ class AppRoute {
   AppRoute.timer() : page = AppPages.timer;
 
   AppRoute.posts() : page = AppPages.posts;
+
+  AppRoute.todos() : page = AppPages.todos;
 
   AppRoute.detail({required this.id}) : page = AppPages.detail;
 

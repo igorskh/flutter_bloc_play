@@ -13,6 +13,8 @@ AppRoute parseRoute(Uri uri) {
       return AppRoute.timer();
     } else if (uri.pathSegments[0] == AppRoute.pagePrefix(AppPages.posts)) {
       return AppRoute.posts();
+    } else if (uri.pathSegments[0] == AppRoute.pagePrefix(AppPages.todos)) {
+      return AppRoute.todos();
     }
   }
 

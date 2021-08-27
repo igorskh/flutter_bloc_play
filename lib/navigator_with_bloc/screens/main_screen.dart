@@ -46,6 +46,10 @@ class _MainScreenState extends State<MainScreen> {
                   child: Text('Posts')),
               SizedBox(height: 10),
               ElevatedButton(onPressed: _navigateDetail, child: Text('Detail')),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  onPressed: () => _navigate(AppRoute.todos()),
+                  child: Text('Todos')),
             ],
           ),
         ),

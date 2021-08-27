@@ -4,6 +4,7 @@ import 'package:counter_bloc/navigator_with_bloc/screens/main_screen.dart';
 import 'package:counter_bloc/navigator_with_bloc/screens/unknown_screen.dart';
 import 'package:counter_bloc/posts/posts.dart';
 import 'package:counter_bloc/timer/timer.dart';
+import 'package:counter_bloc/todos/todos.dart';
 import 'package:flutter/material.dart';
 
 import 'router.dart';
@@ -24,6 +25,8 @@ Page routeToPage(AppRoute route) {
     child = TimerScreen();
   } else if (route.isPage(AppPages.posts)) {
     child = PostsScreen();
+  } else if (route.isPage(AppPages.todos)) {
+    child = TodoScreen();
   } else {
     child = UnknownScreen();
   }
