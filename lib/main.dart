@@ -1,10 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
-import 'app.dart';
-import 'counter_observer.dart';
+import 'navigator_no_bloc/app.dart';
 
 void main() {
-  Bloc.observer = CounterObserver();
-  runApp(const PlayWithBlocApp());
+  runApp(const NoBlocNavigationApp());
 }

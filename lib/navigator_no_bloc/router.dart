@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'posts/posts.dart';
-import 'counter/counter.dart';
-import 'timer/timer.dart';
-import 'home/home.dart';
+
+import '../counter/counter.dart';
+import '../posts/posts.dart';
+import '../timer/timer.dart';
+import 'view/home_page.dart';
 
 enum Pages { home, counter, posts, timer }
 
-class MyAppRouterDelegate extends RouterDelegate
+class AppRouterDelegate extends RouterDelegate
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
-  MyAppRouterDelegate();
+  AppRouterDelegate();
 
   Pages _currentPage = Pages.home;
 
@@ -30,12 +31,9 @@ class MyAppRouterDelegate extends RouterDelegate
         HomePage(
           onNavigate: _navigatePage,
         ),
-        if (_currentPage == Pages.timer)
-          TimerPage(),
-        if (_currentPage == Pages.counter)
-          CounterPage(),
-        if (_currentPage == Pages.posts)
-          PostsPage(),
+        if (_currentPage == Pages.timer) TimerPage(),
+        if (_currentPage == Pages.counter) CounterPage(),
+        if (_currentPage == Pages.posts) PostsPage(),
       ],
       onPopPage: (route, result) {
         if (!route.didPop(result)) return false;

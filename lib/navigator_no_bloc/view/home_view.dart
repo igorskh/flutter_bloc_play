@@ -1,5 +1,6 @@
-import 'package:counter_bloc/router.dart';
 import 'package:flutter/material.dart';
+
+import '../router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key, required this.onNavigate}) : super(key: key);
@@ -30,22 +31,6 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HomePage extends Page {
-  HomePage({required this.onNavigate}) : super(key: ValueKey('HomePage'));
-
-  final ValueChanged<Pages> onNavigate;
-
-  @override
-  Route createRoute(BuildContext context) {
-    return MaterialPageRoute(
-      settings: this,
-      builder: (BuildContext context) => HomeScreen(
-        onNavigate: onNavigate,
       ),
     );
   }
