@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,59 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+  void _addToList(List<Widget> list, Widget appWidget) {
+    list.add(appWidget);
+    list.add(SizedBox(height: 10));
+  }
+
+  List<Widget> _appsList() {
+    List<Widget> apps = [];
+
+    _addToList(
+      apps,
+      ElevatedButton(
+        onPressed: () => _navigate(AppRoute.home()),
+        child: Text('Counter'),
+      ),
+    );
+    _addToList(
+        apps,
+        ElevatedButton(
+          onPressed: () => _navigate(AppRoute.timer()),
+          child: Text('Timer'),
+        ));
+    _addToList(
+      apps,
+      ElevatedButton(
+        onPressed: () => _navigate(AppRoute.posts()),
+        child: Text('Posts'),
+      ),
+    );
+
+    _addToList(
+      apps,
+      ElevatedButton(
+        onPressed: _navigateDetail,
+        child: Text('Detail'),
+      ),
+    );
+
+    if (kIsWeb) {
+      apps.add(
+        Text('Not available in Web'),
+      );
+    }
+    _addToList(
+      apps,
+      ElevatedButton(
+        onPressed: kIsWeb ? null : () => _navigate(AppRoute.todos()),
+        child: Text('Todos'),
+      ),
+    );
+
+    return apps;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,25 +86,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            children: [
-              ElevatedButton(
-                  onPressed: () => _navigate(AppRoute.home()),
-                  child: Text('Counter')),
-              SizedBox(height: 10),
-              ElevatedButton(
-                  onPressed: () => _navigate(AppRoute.timer()),
-                  child: Text('Timer')),
-              SizedBox(height: 10),
-              ElevatedButton(
-                  onPressed: () => _navigate(AppRoute.posts()),
-                  child: Text('Posts')),
-              SizedBox(height: 10),
-              ElevatedButton(onPressed: _navigateDetail, child: Text('Detail')),
-              SizedBox(height: 10),
-              ElevatedButton(
-                  onPressed: () => _navigate(AppRoute.todos()),
-                  child: Text('Todos')),
-            ],
+            children: [..._appsList()],
           ),
         ),
       ),
